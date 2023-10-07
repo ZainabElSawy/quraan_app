@@ -5,6 +5,7 @@ import 'package:quraan_app/core/widgets/custom_button.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/custom_title.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/facebook_logo.dart';
+import 'package:quraan_app/features/auth/presentation/views/widgets/terms_of_services.dart';
 
 class SignUpBody extends StatelessWidget {
   const SignUpBody({super.key});
@@ -16,12 +17,16 @@ class SignUpBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const CustomTitle(title: "Create Account"),
+          const SizedBox(height: 5),
           const CustomTextField(hint: "Full Name"),
+          const SizedBox(height: 10),
           const CustomTextField(hint: "E-Mail"),
+          const SizedBox(height: 10),
           const CustomTextField(hint: "PassWord"),
+          const SizedBox(height: 10),
           const CustomTextField(hint: "Confirm Password"),
           const SizedBox(height: 20),
-          const TermsOfServices(),
+          TermsOfServices(),
           const SizedBox(height: 15),
           CustomButton(
             color: kPrimaryColor,
@@ -53,43 +58,3 @@ class SignUpBody extends StatelessWidget {
   }
 }
 
-class TermsOfServices extends StatefulWidget {
-  const TermsOfServices({
-    super.key,
-  });
-
-  @override
-  State<TermsOfServices> createState() => _TermsOfServicesState();
-}
-
-class _TermsOfServicesState extends State<TermsOfServices> {
-  bool val = false;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Checkbox(
-          value: val,
-          onChanged: (value) {
-            setState(() {
-              val = value ?? false;
-            });
-          },
-        ),
-        const SizedBox(width: 5),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text("I agree all statements in"),
-            Text(
-              "terms of services",
-              style: Styles.textStyle14.copyWith(color: kPrimaryColor),
-            )
-          ],
-        )
-      ],
-    );
-  }
-}

@@ -20,7 +20,8 @@ class QuraanApp extends StatelessWidget {
         routerConfig: AppRouter.route,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor),
+          colorScheme:
+              ColorScheme.fromSeed(seedColor: kPrimaryColor.withOpacity(0.1)),
           useMaterial3: true,
         ),
       ),

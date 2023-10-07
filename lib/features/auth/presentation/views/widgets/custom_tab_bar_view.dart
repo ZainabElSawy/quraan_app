@@ -13,7 +13,6 @@ class CustomTabBarView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBarView(
-
       controller: _tabController,
       children: const [
         LoginBody(),
@@ -21,4 +20,6 @@ class CustomTabBarView extends StatelessWidget {
       ],
     );
   }
-}
+
+  }
+

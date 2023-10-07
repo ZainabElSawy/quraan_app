@@ -13,7 +13,7 @@ class SplashViewBody extends StatefulWidget {
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
-    navigateToHome();
+    navigateToAuth();
     super.initState();
   }
 
@@ -38,7 +38,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
     );
   }
 
-  void navigateToHome() {
+  void navigateToAuth() {
     Future.delayed(
       const Duration(seconds: 2),
       () {

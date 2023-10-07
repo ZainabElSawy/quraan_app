@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:quraan_app/core/constants/app_router.dart';
 
 import 'package:quraan_app/core/constants/colors.dart';
 import 'package:quraan_app/core/constants/styles.dart';
@@ -18,17 +20,21 @@ class LoginBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const CustomTitle(title: "Login"),
-          const CustomTextField(hint: "UserName"),
-          const CustomTextField(hint: "PassWord"),
           const SizedBox(height: 5),
+          const CustomTextField(hint: "UserName"),
+          const SizedBox(height: 10),
+          const CustomTextField(hint: "PassWord"),
+          const SizedBox(height: 10),
           CustomTextButton(
             text: "Forget Password",
             onPressed: () {},
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 15),
           CustomButton(
             color: kPrimaryColor,
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kHomeView);
+            },
             child: Text(
               "Login",
               style: Styles.textStyle16.copyWith(color: Colors.white),

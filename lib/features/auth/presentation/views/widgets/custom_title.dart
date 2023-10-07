@@ -14,7 +14,7 @@ class CustomTitle extends StatelessWidget {
     return Text(
       title,
       textAlign: TextAlign.center,
-      style: Styles.textStyle18.copyWith(color: kPrimaryColor),
+      style: Styles.textStyle20.copyWith(color: kPrimaryColor),
     );
   }
 }

@@ -19,32 +19,37 @@ class CustomTabBar extends StatelessWidget {
         border: Border.all(color: Colors.black, width: 2),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: TabBar(
-        labelPadding: const EdgeInsets.all(0),
-        unselectedLabelColor: kSecondaryColor,
-        unselectedLabelStyle: Styles.textStyle14,
-        labelStyle: Styles.textStyle14,
-        dividerColor: Colors.transparent,
-        labelColor: Colors.white,
-        indicator: BoxDecoration(
-          color: kPrimaryColor.withOpacity(0.8),
-          border: Border.all(color: Colors.black, width: 0.5),
-          borderRadius: BorderRadius.circular(12),
+      child: Expanded(
+        child: TabBar(
+          labelPadding: const EdgeInsets.all(0),
+          unselectedLabelColor: kSecondaryColor,
+          unselectedLabelStyle: Styles.textStyle14,
+          labelStyle: Styles.textStyle14,
+          dividerColor: Colors.transparent,
+          labelColor: Colors.white,
+          indicator: BoxDecoration(
+            color: kPrimaryColor.withOpacity(0.8),
+            border: Border.all(color: Colors.black, width: 0.5),
+            borderRadius: BorderRadius.circular(9),
+          ),
+          onTap: (value) {
+            if (value == 0) {
+              BlocProvider.of<AuthCubit>(context).showLogin();
+            } else {
+              BlocProvider.of<AuthCubit>(context).showSignUp();
+            }
+          },
+          indicatorColor: Colors.transparent,
+          controller: _tabController,
+          tabs: const [
+            Expanded(child: Tab(child: Center(child: Text("Login")))),
+            Expanded(child: Tab(child: Center(child: Text("Sign Up")))),
+          ],
         ),
-        onTap: (value) {
-          if (value == 0) {
-            BlocProvider.of<AuthCubit>(context).showLogin();
-          }else{
-            BlocProvider.of<AuthCubit>(context).showSignUp();
-          }
-        },
-        indicatorColor: Colors.transparent,
-        controller: _tabController,
-        tabs: const [
-          Expanded(child: Tab(child: Center(child: Text("Login")))),
-          Expanded(child: Tab(child: Center(child: Text("Sign Up")))),
-        ],
       ),
     );
+    
   }
+
+  
 }

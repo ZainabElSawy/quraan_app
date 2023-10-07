@@ -1,10 +1,11 @@
-
 import 'package:go_router/go_router.dart';
 import 'package:quraan_app/features/auth/presentation/views/auth_view.dart';
+import 'package:quraan_app/features/home/presentation/views/home_view.dart';
 import 'package:quraan_app/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
   static const String kAuthView = "/authView";
+  static const String kHomeView = "/homeView";
   static const String kBookDetailsView = "/bookDetailsView";
   static const String kSearchView = "/searchView";
   static final route = GoRouter(
@@ -16,6 +17,10 @@ abstract class AppRouter {
       GoRoute(
         path: kAuthView,
         builder: (context, state) => const AuthView(),
+      ),
+      GoRoute(
+        path: kHomeView,
+        builder: (context, state) => const HomeView(),
       ),
       // GoRoute(
       //   path: kBookDetailsView,

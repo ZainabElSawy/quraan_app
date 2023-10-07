@@ -4,6 +4,7 @@ part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(LoginState());
+  
   void showLogin() => emit(LoginState());
   void showSignUp() => emit(SignupState());
 }
