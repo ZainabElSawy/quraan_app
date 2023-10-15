@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuranApp</string>
+    <string name="facebook_app_id">297811853002577</string>
+    <string name="fb_login_protocol_scheme">fb56b6bcfe48cc8ea64d6a1da7c46972d5</string>
+    <string name="facebook_client_token">d115e40d1ee04f46330827cb41d63018</string>
+</resources>

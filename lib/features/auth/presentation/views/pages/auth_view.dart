@@ -33,24 +33,16 @@ class _AuthViewState extends State<AuthView>
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
-          child: CustomScrollView(
-            physics: const BouncingScrollPhysics(),
-            slivers: [
-              SliverToBoxAdapter(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const SpacingInTop(),
-                    const LogoWidget(),
-                    const SizedBox(height: 40),
-                    CustomTabBar(tabController: _tabController),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.7,
-                      child: CustomTabBarView(tabController: _tabController),
-                    ),
-                  ],
-                ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SpacingInTop(),
+              const LogoWidget(),
+              const SizedBox(height: 40),
+              CustomTabBar(tabController: _tabController),
+              const SizedBox(height: 20),
+              Expanded(
+                child: CustomTabBarView(tabController: _tabController),
               ),
             ],
           ),
@@ -59,4 +51,3 @@ class _AuthViewState extends State<AuthView>
     );
   }
 }
-

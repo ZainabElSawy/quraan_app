@@ -41,6 +41,16 @@ dependencies:
   dio: ^5.3.3
   flutter_inner_shadow: ^0.0.1
   curved_navigation_bar: ^1.0.3
+  firebase_core: ^2.17.0
+  cloud_firestore: ^4.9.3
+  firebase_storage: ^11.2.8
+  firebase_messaging: ^14.6.9
+  firebase_auth: ^4.10.1
+  google_sign_in: ^6.1.5
+  bloc: ^8.1.2
+  meta: ^1.9.1
+  flutter_facebook_auth: '^3.5.0'
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

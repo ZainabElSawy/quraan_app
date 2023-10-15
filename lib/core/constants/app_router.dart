@@ -1,6 +1,8 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:quraan_app/features/auth/presentation/views/auth_view.dart';
-import 'package:quraan_app/features/home/presentation/views/home_view.dart';
+import 'package:quraan_app/features/auth/presentation/views/pages/auth_view.dart';
+import 'package:quraan_app/features/home/presentation/view_models/home_cubit/home_cubit.dart';
+import 'package:quraan_app/features/home/presentation/views/pages/home_view.dart';
 import 'package:quraan_app/features/splash/presentation/views/splash_view.dart';
 
 abstract class AppRouter {
@@ -20,7 +22,10 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kHomeView,
-        builder: (context, state) => const HomeView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => HomeCubit(),
+          child: const HomeView(),
+        ),
       ),
       // GoRoute(
       //   path: kBookDetailsView,
