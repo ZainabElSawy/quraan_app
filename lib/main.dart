@@ -4,8 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quraan_app/core/constants/app_router.dart';
 import 'package:quraan_app/core/constants/app_theme.dart';
 import 'package:quraan_app/features/auth/data/repos/auth_repo_imp.dart';
-import 'package:quraan_app/features/auth/presentation/view_models/auth_view_cubit/auth_cubit.dart';
-import 'package:quraan_app/features/auth/presentation/view_models/signup_view_cubits/signup_cubit/sign_up_cubit.dart';
+import 'package:quraan_app/features/auth/presentation/view_models/auth_cubit/auth_cubit.dart';
+import 'package:quraan_app/features/auth/presentation/view_models/login_cubit/login_cubit.dart';
+import 'package:quraan_app/features/auth/presentation/view_models/sign_with_facebook_cubit/cubit/sign_with_face_book_cubit.dart';
+import 'package:quraan_app/features/auth/presentation/view_models/signup_cubits/signup_cubit/sign_up_cubit.dart';
 import 'package:quraan_app/firebase_options.dart';
 
 void main() async {
@@ -24,6 +26,8 @@ class QuraanApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
         BlocProvider(create: (context) => SignUpCubit(AuthRepoImp())),
+        BlocProvider(create: (context) => LoginCubit(AuthRepoImp())),
+        BlocProvider(create: (context) => SignWithFaceBookCubit(AuthRepoImp())),
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.route,

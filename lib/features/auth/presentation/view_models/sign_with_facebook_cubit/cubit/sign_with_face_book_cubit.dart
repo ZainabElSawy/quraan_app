@@ -10,7 +10,6 @@ class SignWithFaceBookCubit extends Cubit<SignWithFaceBookState> {
   AuthRepo authRepo;
   Future<void> signFacebook() async {
     emit(SignWithFacebookLoading());
-
     var result = await authRepo.signWithFaceBook();
     result.fold(
       (error) => emit(SignWithFacebookFailure(error)),

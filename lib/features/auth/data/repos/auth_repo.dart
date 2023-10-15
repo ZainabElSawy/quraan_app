@@ -6,5 +6,9 @@ abstract class AuthRepo {
     required String email,
     required String password,
   });
+  Future<Either<String, UserCredential>> loginRepo({
+    required String email,
+    required String password,
+  });
   Future<Either<String, UserCredential>> signWithFaceBook();
 }

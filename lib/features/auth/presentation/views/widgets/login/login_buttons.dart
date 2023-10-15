@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:quraan_app/features/auth/data/repos/auth_repo_imp.dart';
+import 'package:quraan_app/features/auth/presentation/view_models/login_cubit/login_cubit.dart';
 import 'package:quraan_app/features/auth/presentation/view_models/sign_with_facebook_cubit/cubit/sign_with_face_book_cubit.dart';
-import 'package:quraan_app/features/auth/presentation/view_models/signup_cubits/signup_cubit/sign_up_cubit.dart';
+import 'package:quraan_app/features/auth/presentation/views/widgets/custom_text_button.dart';
+import 'package:quraan_app/features/auth/presentation/views/widgets/login/login_with_email_button.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/sign_with_facebook_button.dart';
-import 'package:quraan_app/features/auth/presentation/views/widgets/signup/signup_with_email_button.dart';
 
-class SignUpButtons extends StatelessWidget {
-  const SignUpButtons({
-    super.key,
-    required this.signUpCubit,
-  });
+class LoginButtons extends StatelessWidget {
+  final LoginCubit loginCubit;
+  const LoginButtons({
+    Key? key,
+    required this.loginCubit,
+  }) : super(key: key);
 
-  final SignUpCubit signUpCubit;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SignUpWithEmailButton(signUpCubit: signUpCubit),
+        CustomTextButton(
+          text: "Forget Password",
+          onPressed: () {},
+        ),
+        const SizedBox(height: 15),
+        LoginWithEmailButton(loginCubit: loginCubit),
         const SizedBox(height: 10),
         BlocProvider(
           create: (context) => SignWithFaceBookCubit(AuthRepoImp()),

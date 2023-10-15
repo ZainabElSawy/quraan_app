@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quraan_app/core/functions/valid_input.dart';
-import 'package:quraan_app/features/auth/presentation/view_models/signup_view_cubits/signup_cubit/sign_up_cubit.dart';
+import 'package:quraan_app/features/auth/presentation/view_models/signup_cubits/signup_cubit/sign_up_cubit.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/custom_text_field.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/signup/terms_of_services.dart';
 
@@ -45,7 +45,7 @@ class SignUpTextFields extends StatelessWidget {
           },
         ),
         const SizedBox(height: 20),
-        TermsOfServices(),
+        const TermsOfServices(),
       ],
     );
   }

@@ -13,15 +13,16 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController password = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
   AuthRepo authRepo;
+  bool loading = false;
   Future<void> signUp({
     required String inpEmail,
     required String inpPassword,
   }) async {
-    // print(
-    //     "Info:$formstate \n Email: ${email.text} \n Password ${password.text}");
     emit(SignUpLoading());
-    var result =
-        await authRepo.signUpRepo(email: inpEmail, password: inpPassword);
+    var result = await authRepo.signUpRepo(
+      email: inpEmail,
+      password: inpPassword,
+    );
     result.fold(
       (error) => emit(SignUpFailure(error)),
       (credential) => emit(SignUpSuccess()),

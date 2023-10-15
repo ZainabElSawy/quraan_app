@@ -6,25 +6,24 @@ import 'package:quraan_app/core/constants/colors.dart';
 import 'package:quraan_app/core/constants/styles.dart';
 import 'package:quraan_app/core/functions/show_snack_bar.dart';
 import 'package:quraan_app/core/widgets/custom_button.dart';
-import 'package:quraan_app/features/auth/presentation/view_models/signup_cubits/signup_cubit/sign_up_cubit.dart';
+import 'package:quraan_app/features/auth/presentation/view_models/login_cubit/login_cubit.dart';
 
-class SignUpWithEmailButton extends StatelessWidget {
-  const SignUpWithEmailButton({
+class LoginWithEmailButton extends StatelessWidget {
+  const LoginWithEmailButton({
     super.key,
-    required this.signUpCubit,
+    required this.loginCubit,
   });
 
-  final SignUpCubit signUpCubit;
+  final LoginCubit loginCubit;
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SignUpCubit, SignUpState>(
+    return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        if (state is SignUpLoading) {
-          // Handle loading state
-        } else if (state is SignUpSuccess) {
+        if (state is LoginLoading) {
+        } else if (state is LoginSuccess) {
           GoRouter.of(context).push(AppRouter.kHomeView);
-        } else if (state is SignUpFailure) {
+        } else if (state is LoginFailure) {
           state.errMessage != null
               ? ShowSnackBar(state.errMessage!, context)
               : null;
@@ -33,15 +32,14 @@ class SignUpWithEmailButton extends StatelessWidget {
       child: CustomButton(
         color: kPrimaryColor,
         onPressed: () async {
-          if (signUpCubit.formstate.currentState!.validate()) {
-            BlocProvider.of<SignUpCubit>(context).signUp(
-              inpEmail: signUpCubit.email.text,
-              inpPassword: signUpCubit.password.text,
-            );
+          if (loginCubit.formState.currentState!.validate()) {
+            BlocProvider.of<LoginCubit>(context).login(
+                inpEmail: loginCubit.email.text,
+                inpPassword: loginCubit.password.text);
           }
         },
         child: Text(
-          "Sign Up",
+          "Login",
           style: Styles.textStyle16.copyWith(color: Colors.white),
         ),
       ),

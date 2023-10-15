@@ -10,8 +10,11 @@ class AuthRepoImp extends AuthRepo {
     required String password,
   }) async {
     try {
-      UserCredential credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
+      UserCredential credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
       return right(credential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -36,6 +39,28 @@ class AuthRepoImp extends AuthRepo {
       return right(userCredential);
     } catch (e) {
       return left("Error: $e");
+    }
+  }
+
+  @override
+  Future<Either<String, UserCredential>> loginRepo({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return right(credential);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
+        return left('Email or password is incorrect, please try again !');
+      } else {
+        return left(e.code);
+      }
+    } catch (e) {
+      return left("Error : $e");
     }
   }
 }
