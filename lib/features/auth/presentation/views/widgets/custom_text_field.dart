@@ -11,7 +11,6 @@ class CustomTextField extends StatelessWidget {
     required this.hint,
     required this.controller,
   }) : super(key: key);
-  
 
   @override
   Widget build(BuildContext context) {

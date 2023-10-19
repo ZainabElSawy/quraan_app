@@ -23,7 +23,7 @@ class CustomNavigationBar extends StatelessWidget {
       ),
       child: CurvedNavigationBar(
         key: bottomNavigationKey,
-        index: 0,
+        index: 2,
         height: 60.0,
         color: kPrimaryColor,
         buttonBackgroundColor: kPrimaryColor,
@@ -33,11 +33,11 @@ class CustomNavigationBar extends StatelessWidget {
         letIndexChange: (index) => true,
         onTap: (index) {
           if (index == 0) {
-            BlocProvider.of<HomeCubit>(context).showHome();
+            BlocProvider.of<HomeCubit>(context).showQuran();
           } else if (index == 1) {
             BlocProvider.of<HomeCubit>(context).showFavourit();
           } else if (index == 2) {
-            BlocProvider.of<HomeCubit>(context).showQuran();
+            BlocProvider.of<HomeCubit>(context).showHome();
           } else if (index == 3) {
             BlocProvider.of<HomeCubit>(context).showCompass();
           } else if (index == 4) {
@@ -45,14 +45,14 @@ class CustomNavigationBar extends StatelessWidget {
           }
         },
         items: <Widget>[
-          const Icon(Icons.home, size: 30),
-          const Icon(Icons.favorite, size: 30),
           Image.asset(
             AssetsData.quranLogo,
             width: 30,
             height: 30,
             fit: BoxFit.fill,
           ),
+          const Icon(Icons.favorite, size: 30),
+          const Icon(Icons.home, size: 30),
           const Icon(Icons.explore, size: 30),
           const Icon(Icons.waving_hand, size: 30),
         ],

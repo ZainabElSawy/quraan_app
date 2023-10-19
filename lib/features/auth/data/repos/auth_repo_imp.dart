@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:quraan_app/features/auth/data/repos/auth_repo.dart';
+import 'package:quraan_app/main.dart';
 
 class AuthRepoImp extends AuthRepo {
   @override
@@ -15,6 +16,7 @@ class AuthRepoImp extends AuthRepo {
         email: email,
         password: password,
       );
+      sharedPreferences?.setString("uid", credential.user!.uid);
       return right(credential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -36,6 +38,7 @@ class AuthRepoImp extends AuthRepo {
           FacebookAuthProvider.credential(loginResult.accessToken!.token);
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithCredential(facebookAuthCredential);
+      sharedPreferences?.setString("uid", userCredential.user!.uid);
       return right(userCredential);
     } catch (e) {
       return left("Error: $e");
@@ -52,6 +55,7 @@ class AuthRepoImp extends AuthRepo {
         email: email,
         password: password,
       );
+      sharedPreferences?.setString("uid", credential.user!.uid);
       return right(credential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'INVALID_LOGIN_CREDENTIALS') {

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:quraan_app/core/constants/colors.dart';
-import 'package:quraan_app/features/home/presentation/views/widgets/date_or_month.dart';
 
+import 'package:quraan_app/core/constants/colors.dart';
+import 'package:quraan_app/features/home/data/models/prayer_timings_model/hijri.dart';
+import 'package:quraan_app/features/home/presentation/views/widgets/prayer_times/date_or_month.dart';
+
+// ignore: must_be_immutable
 class Date extends StatelessWidget {
-  const Date({
-    super.key,
-  });
+  Hijri? date;
+  Date({
+    Key? key,
+    required this.date,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +19,18 @@ class Date extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: kWhiteColor!, width: 2),
       ),
-      child: const Row(
+      child: Row(
         children: [
           DateOrMonth(
-            text: "محرم",
-            borderRadius: BorderRadius.only(
+            text: date?.month!.ar ?? '',
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(12),
               bottomLeft: Radius.circular(12),
             ),
           ),
           DateOrMonth(
-            text: "12",
-            borderRadius: BorderRadius.only(
+            text: date?.day ?? '',
+            borderRadius: const BorderRadius.only(
               topRight: Radius.circular(12),
               bottomRight: Radius.circular(12),
             ),
@@ -35,4 +40,3 @@ class Date extends StatelessWidget {
     );
   }
 }
-

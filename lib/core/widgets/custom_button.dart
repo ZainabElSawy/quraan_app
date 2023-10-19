@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 // ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
   final Color color;

@@ -5,6 +5,8 @@ class CompassView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Compass View"),);
+    return const Center(
+      child: Text("Compass View"),
+    );
   }
 }
