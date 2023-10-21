@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:quraan_app/core/constants/assets.dart';
 

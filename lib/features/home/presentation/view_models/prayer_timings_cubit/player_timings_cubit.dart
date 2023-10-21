@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:quraan_app/features/home/data/models/prayer_timings_model/prayer_timings_model.dart';
-import 'package:quraan_app/features/home/data/repo/home_repo.dart';
+
+import '../../../data/repo/home_repository/home_repo.dart';
 
 part 'player_timings_state.dart';
 

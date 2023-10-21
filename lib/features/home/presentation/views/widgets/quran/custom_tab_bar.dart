@@ -13,42 +13,43 @@ class CustomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 5),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 2),
-          borderRadius: BorderRadius.circular(18),
-        ),
-        child: Expanded(
-          child: Directionality(
-            textDirection: TextDirection.rtl,
-            child: TabBar(
-              labelPadding: const EdgeInsets.all(0),
-              unselectedLabelColor: kBlackColor,
-              unselectedLabelStyle: Styles.textStyle20,
-              labelStyle: Styles.textStyle20,
-              dividerColor: Colors.transparent,
-              labelColor: kPrimaryColor,
-              onTap: (value) {
-                if (value == 0) {
-                  print("السور");
-                } else if (value == 1) {
-                  print("الاجزاء");
-                } else {
-                  print("الشيوخ");
-                }
-              },
-              indicatorColor: Colors.transparent,
-              controller: _tabController,
-              tabs: tabs,
-            ),
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black, width: 2),
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: Expanded(
+        child: Directionality(
+          textDirection: TextDirection.rtl,
+          child: TabBar(
+            labelPadding: const EdgeInsets.all(0),
+            unselectedLabelColor: kBlackColor,
+            unselectedLabelStyle: Styles.textStyle20,
+            labelStyle: Styles.textStyle20,
+            dividerColor: Colors.transparent,
+            labelColor: kPrimaryColor,
+            onTap: (value) {
+              if (value == 0) {
+                // ignore: avoid_print
+                print("السور");
+              } else if (value == 1) {
+                // ignore: avoid_print
+                print("الاجزاء");
+              } else {
+                // ignore: avoid_print
+                print("الشيوخ");
+              }
+            },
+            indicatorColor: Colors.transparent,
+            controller: _tabController,
+            tabs: tabs,
           ),
         ),
       ),
     );
   }
+
   List<Widget> tabs = [
     const Expanded(child: Tab(child: Text("السور"))),
     Expanded(

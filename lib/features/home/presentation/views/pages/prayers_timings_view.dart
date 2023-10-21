@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quraan_app/features/home/presentation/view_models/prayer_timings_cubit/player_timings_cubit.dart';
 import 'package:quraan_app/features/home/presentation/views/widgets/prayer_times/custom_date_container.dart';
-import 'package:quraan_app/features/home/presentation/views/widgets/prayer_times/custom_error_contant.dart';
+import 'package:quraan_app/features/home/presentation/views/widgets/custom_error_contant.dart';
 import 'package:quraan_app/features/home/presentation/views/widgets/prayer_times/custom_praying_time_column.dart';
 import 'package:quraan_app/features/home/presentation/views/widgets/prayer_times/loading_prayer_timings_view.dart';
 import 'package:quraan_app/features/home/presentation/views/widgets/prayer_times/time_remaining.dart';

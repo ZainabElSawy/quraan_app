@@ -12,8 +12,8 @@ class TimeRemaining extends StatelessWidget {
     Key? key,
     this.prayTime,
   }) : super(key: key);
-  DateTime formattedTime = DateFormat.Hm()
-      .parseStrict("${DateTime.now().hour + 1}:${DateTime.now().minute}");
+  DateTime formattedTime = DateFormat.Hm().parseStrict(
+      "${DateTime.now().hour < 23 ? DateTime.now().hour + 1 : 1}:${DateTime.now().minute}");
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +27,7 @@ class TimeRemaining extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
         ),
         child: (formattedTime.hour <=
-                    DateFormat.Hm().parseStrict(prayTime!.fajr!).hour) ||
-                (formattedTime.hour >
-                    DateFormat.Hm().parseStrict(prayTime!.isha!).hour)
+                DateFormat.Hm().parseStrict(prayTime!.fajr!).hour)
             ? CustomTimeRemainingToPray(
                 azan: 'الفجر',
                 prayTime: prayTime!.fajr!,

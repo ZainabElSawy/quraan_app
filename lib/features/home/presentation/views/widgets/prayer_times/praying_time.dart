@@ -21,7 +21,7 @@ class PrayingTime extends StatelessWidget {
         ),
         child: pray == null && time == null
             ? Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5),
+                padding: const EdgeInsets.symmetric(vertical: 7),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

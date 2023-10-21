@@ -10,7 +10,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: kWhiteColor,
+      surfaceTintColor: kScaffoldColor,
+      backgroundColor: kScaffoldColor,
       leading: const CustomPopUpMenuButton(),
       actions: [
         IconButton(

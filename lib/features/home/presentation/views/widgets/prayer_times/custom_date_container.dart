@@ -42,7 +42,7 @@ class CustomDateContainer extends StatelessWidget {
                     style: Styles.textStyle22.copyWith(color: kWhiteColor),
                   ),
                   const SizedBox(height: 10),
-                  Date(date: date ),
+                  Date(date: date),
                 ],
               ),
               const SizedBox(width: 15),
