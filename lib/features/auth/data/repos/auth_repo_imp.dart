@@ -1,10 +1,12 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:quraan_app/features/auth/data/data_sources/auth_datasource.dart';
 import 'package:quraan_app/features/auth/data/repos/auth_repo.dart';
 import 'package:quraan_app/main.dart';
 
 class AuthRepoImp extends AuthRepo {
+  AuthDataSource authDataSource;
+  AuthRepoImp(this.authDataSource);
   @override
   Future<Either<String, UserCredential>> signUpRepo({
     required String email,
@@ -12,10 +14,7 @@ class AuthRepoImp extends AuthRepo {
   }) async {
     try {
       UserCredential credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+          await authDataSource.signUp(email: email, password: password);
       sharedPreferences?.setString("uid", credential.user!.uid);
       return right(credential);
     } on FirebaseAuthException catch (e) {
@@ -33,11 +32,7 @@ class AuthRepoImp extends AuthRepo {
   @override
   Future<Either<String, UserCredential>> signWithFaceBook() async {
     try {
-      final LoginResult loginResult = await FacebookAuth.instance.login();
-      final OAuthCredential facebookAuthCredential =
-          FacebookAuthProvider.credential(loginResult.accessToken!.token);
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithCredential(facebookAuthCredential);
+      UserCredential userCredential = await authDataSource.signWithFaceBook();
       sharedPreferences?.setString("uid", userCredential.user!.uid);
       return right(userCredential);
     } catch (e) {
@@ -51,10 +46,8 @@ class AuthRepoImp extends AuthRepo {
     required String password,
   }) async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
+      final credential =
+          await authDataSource.signIn(email: email, password: password);
       sharedPreferences?.setString("uid", credential.user!.uid);
       return right(credential);
     } on FirebaseAuthException catch (e) {

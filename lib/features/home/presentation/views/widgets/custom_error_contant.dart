@@ -11,18 +11,27 @@ class CustomErrorContant extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Row(
-        children: [
-          const Icon(
-            Icons.error_outline,
-            color: kPrimaryColor,
-          ),
-          Text(
-            errMessage,
-            style: Styles.textStyle22.copyWith(color: Colors.red),
-          ),
-        ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Center(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(
+              Icons.error_outline,
+              color: kPrimaryColor,
+              size: 30,
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                errMessage,
+                style: Styles.textStyle22.copyWith(color: Colors.red),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

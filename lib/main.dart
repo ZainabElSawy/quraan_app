@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quraan_app/core/constants/app_router.dart';
 import 'package:quraan_app/core/constants/app_theme.dart';
-import 'package:quraan_app/core/services/service_locator.dart';
+import 'package:quraan_app/core/dependency_injection/service_locator.dart';
 import 'package:quraan_app/features/auth/data/repos/auth_repo_imp.dart';
 import 'package:quraan_app/features/auth/presentation/view_models/auth_cubit/auth_cubit.dart';
 import 'package:quraan_app/features/auth/presentation/view_models/login_cubit/login_cubit.dart';
@@ -30,9 +30,15 @@ class QuraanApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => AuthCubit()),
-        BlocProvider(create: (context) => SignUpCubit(AuthRepoImp())),
-        BlocProvider(create: (context) => LoginCubit(AuthRepoImp())),
-        BlocProvider(create: (context) => SignWithFaceBookCubit(AuthRepoImp())),
+        BlocProvider(
+          create: (context) => SignUpCubit(getIt.get<AuthRepoImp>()),
+        ),
+        BlocProvider(
+          create: (context) => LoginCubit(getIt.get<AuthRepoImp>()),
+        ),
+        BlocProvider(
+          create: (context) => SignWithFaceBookCubit(getIt.get<AuthRepoImp>()),
+        ),
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.route,

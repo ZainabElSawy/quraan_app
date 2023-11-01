@@ -12,95 +12,84 @@ class SurahView extends StatelessWidget {
   const SurahView({super.key});
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-            // appBar: AppBar(
-            //   centerTitle: true,
-            //   title: Text(
-            //     "${state.surahModel.name}",
-            //     style: Styles.textStyle22,
-            //   ),
-            //   backgroundColor: Colors.yellow[100],
-            // ),
-            body: BlocBuilder<SurahCubit, SurahState>(
-              builder: (context, state) {
-                if (state is SurahSuccess) {
-                  return Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: 55,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                fit: BoxFit.fill,
-                                image: AssetImage(
-                                  AssetsData.surahNameImage,
-                                ),
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                "${state.surahModel.name}",
-                                style: Styles.textStyle22,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Wrap(
-                              alignment: WrapAlignment.start,
-                              children: List.generate(
-                                  state.surahModel.ayahs!.length, (index) {
-                                return RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                          text: state
-                                              .surahModel.ayahs![index].text!
-                                              .trim(),
-                                          style: Styles.textStyle20
-                                              .copyWith(color: kBlackColor),
-                                          spellOut: true),
-                                      WidgetSpan(
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 2),
-                                          width: 30,
-                                          height: 30,
-                                          decoration: const BoxDecoration(
-                                            image: DecorationImage(
-                                              image: AssetImage(
-                                                  AssetsData.ayahImage),
-                                            ),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              state.surahModel.ayahs![index]
-                                                  .numberInSurah
-                                                  .toString(),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }),
-                            ),
-                          ),
-                        ],
+    return SafeArea(child: Scaffold(
+        body: BlocBuilder<SurahCubit, SurahState>(
+      builder: (context, state) {
+        if (state is SurahSuccess) {
+          return Directionality(
+            textDirection: TextDirection.rtl,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 55,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage(
+                          AssetsData.surahNameImage,
+                        ),
                       ),
                     ),
-                  );
-                } else if (state is SurahFailure) {
-                  return CustomErrorContant(errMessage: state.errMessage);
-                } else {
-                  return const CustomLoadingIndicator();
-                }
-              },
-            )));
+                    child: Center(
+                      child: Text(
+                        "${state.surahModel.name}",
+                        style: Styles.textStyle22,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Wrap(
+                      alignment: WrapAlignment.start,
+                      children: List.generate(state.surahModel.ayahs!.length,
+                          (index) {
+                        return RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                  text: state.surahModel.ayahs![index].text!
+                                      .trim(),
+                                  style: Styles.textStyle20
+                                      .copyWith(color: kBlackColor),
+                                  spellOut: true),
+                              WidgetSpan(
+                                child: Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 2),
+                                  width: 30,
+                                  height: 30,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(AssetsData.ayahImage),
+                                    ),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      state.surahModel.ayahs![index]
+                                          .numberInSurah
+                                          .toString(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        );
+                      }),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        } else if (state is SurahFailure) {
+          return CustomErrorContant(errMessage: state.errMessage);
+        } else {
+          return const CustomLoadingIndicator();
+        }
+      },
+    )));
   }
 }

@@ -6,10 +6,12 @@ import 'package:quraan_app/features/auth/presentation/views/widgets/custom_title
 import 'package:quraan_app/features/auth/presentation/views/widgets/login/login_buttons.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/login/login_text_fields.dart';
 
+import '../../../../../core/dependency_injection/service_locator.dart';
+
 // ignore: must_be_immutable
 class LoginBody extends StatelessWidget {
   LoginBody({super.key});
-  LoginCubit loginCubit = LoginCubit(AuthRepoImp());
+  LoginCubit loginCubit = LoginCubit(getIt.get<AuthRepoImp>());
   @override
   Widget build(BuildContext context) {
     return Form(

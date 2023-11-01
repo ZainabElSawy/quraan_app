@@ -5,3 +5,4 @@ Color? kSecondaryColor = Colors.grey[400];
 Color? kScaffoldColor = Colors.yellow[100];
 Color? kBlackColor = Colors.black;
 Color? kWhiteColor = Colors.white;
+const Color kLightOrangeColor = Color(0xffffd1b7);

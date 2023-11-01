@@ -2,30 +2,31 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 import 'package:quraan_app/core/constants/failure.dart';
-import 'package:quraan_app/core/services/api_service.dart';
 import 'package:quraan_app/features/home/data/models/quran_models/sur_model/sur_model.dart';
-import '../../models/quran_models/surah_model/surah_model.dart';
+import 'package:quraan_app/features/home/data/models/quran_models/surah_model/surah_model.dart';
+
+import '../../data_sources/quran_datasource/quran_datasource.dart';
 import 'quran_repo.dart';
 
-class QuranRepoImp implements QuranRepo {
-  ApiService apiService =
-      ApiService(dio: Dio(), baseUrl: 'http://api.alquran.cloud/v1/');
+class QuranRepoImpl implements QuranRepo {
+  final QuranDataSource dataSource;
+
+  QuranRepoImpl(this.dataSource);
 
   @override
   Future<Either<Failure, List<SurModel>>> fetchSur() async {
     try {
-      Map<String, dynamic> data = await apiService.get(endPoint: 'surah');
-      List<SurModel> sur = [];
-      for (var surah in data['data']) {
-        sur.add(SurModel.fromJson(surah));
-      }
-      return right(sur);
+      final data = await dataSource.getSurData();
+      final sur = data['data']
+          .map<SurModel>((surah) => SurModel.fromJson(surah))
+          .toList();
+      return Right(sur);
     } catch (e) {
       // ignore: deprecated_member_use
       if (e is DioError) {
-        return left(ServerFailure.fromDioError(e));
+        return Left(ServerFailure.fromDioError(e));
       }
-      return left(ServerFailure(e.toString()));
+      return Left(ServerFailure(e.toString()));
     }
   }
 
@@ -33,16 +34,15 @@ class QuranRepoImp implements QuranRepo {
   Future<Either<Failure, SurahModel>> fetchSurah(
       {required int numberOfSurah}) async {
     try {
-      Map<String, dynamic> data =
-          await apiService.get(endPoint: 'surah/$numberOfSurah');
-      SurahModel surah = SurahModel.fromJson(data['data']);
-      return right(surah);
+      final data = await dataSource.getSurahData(numberOfSurah: numberOfSurah);
+      final surah = SurahModel.fromJson(data['data']);
+      return Right(surah);
     } catch (e) {
       // ignore: deprecated_member_use
       if (e is DioError) {
-        return left(ServerFailure.fromDioError(e));
+        return Left(ServerFailure.fromDioError(e));
       }
-      return left(ServerFailure(e.toString()));
+      return Left(ServerFailure(e.toString()));
     }
   }
 }

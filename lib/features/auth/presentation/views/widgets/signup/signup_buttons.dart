@@ -6,6 +6,8 @@ import 'package:quraan_app/features/auth/presentation/view_models/signup_cubits/
 import 'package:quraan_app/features/auth/presentation/views/widgets/sign_with_facebook_button.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/signup/signup_with_email_button.dart';
 
+import '../../../../../../core/dependency_injection/service_locator.dart';
+
 class SignUpButtons extends StatelessWidget {
   const SignUpButtons({
     super.key,
@@ -20,7 +22,7 @@ class SignUpButtons extends StatelessWidget {
         SignUpWithEmailButton(signUpCubit: signUpCubit),
         const SizedBox(height: 10),
         BlocProvider(
-          create: (context) => SignWithFaceBookCubit(AuthRepoImp()),
+          create: (context) => SignWithFaceBookCubit(getIt.get<AuthRepoImp>()),
           child: const SignWithFacebookButton(),
         )
       ],

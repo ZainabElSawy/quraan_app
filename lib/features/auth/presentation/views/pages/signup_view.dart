@@ -5,10 +5,12 @@ import 'package:quraan_app/features/auth/presentation/views/widgets/custom_title
 import 'package:quraan_app/features/auth/presentation/views/widgets/signup/signup_buttons.dart';
 import 'package:quraan_app/features/auth/presentation/views/widgets/signup/signup_text_fields.dart';
 
+import '../../../../../core/dependency_injection/service_locator.dart';
+
 // ignore: must_be_immutable
 class SignUpBody extends StatelessWidget {
   SignUpBody({super.key});
-  SignUpCubit signUpCubit = SignUpCubit(AuthRepoImp());
+  SignUpCubit signUpCubit = SignUpCubit(getIt.get<AuthRepoImp>());
   @override
   Widget build(BuildContext context) {
     return Form(

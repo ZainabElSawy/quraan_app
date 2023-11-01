@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quraan_app/features/home/data/repo/quran_repository/quran_repo_imp.dart';
 import 'package:quraan_app/features/home/presentation/views/widgets/quran/list_of_sur.dart';
 import 'package:quraan_app/features/home/presentation/views/widgets/quran/logo.dart';
-
-import '../../view_models/quran_cubits/surah_cubit/surah_cubit.dart';
 import '../widgets/quran/custom_tab_bar.dart';
 
 class QuranView extends StatefulWidget {
   const QuranView({super.key});
-
   @override
   State<QuranView> createState() => _QuranViewState();
 }
