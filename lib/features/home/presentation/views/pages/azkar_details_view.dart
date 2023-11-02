@@ -21,9 +21,9 @@ class AzkarDetailsView extends StatelessWidget {
           if (state is AzkarDetailsSuccess) {
             return Scaffold(
               appBar: AzkarDetailsAppBar(
-                  sectionId: state.azkarDetailsList[0].sectionId!),
+                  sectionId: state.azkarDetailsList[0].sectionId!,),
               body:
-                  ListOfAzkarDetails(azkarDetailsList: state.azkarDetailsList),
+                  ListOfAzkarDetails(azkarDetailsList: state.azkarDetailsList,),
             );
           } else if (state is AzkarDetailsFailure) {
             return CustomErrorContant(errMessage: state.errMessage);
